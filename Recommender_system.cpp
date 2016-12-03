@@ -18,6 +18,7 @@ const int M = 25; // For 25 movies
 ll a[MAXM];
 map<ll,ll> m;
 vector<vector<int> >init;
+vector<vector<int> >Genre;
 
 // For Generating the initial matrix
 vector<int> Generate()
@@ -39,6 +40,26 @@ vector<int> Generate()
 
 }
 
+vector<int> Create_genre()
+{
+	vector<int> v;
+	for(int i=0;i<7;i++){
+		int x = rand()%2;
+		v.pb(x);
+	}
+	return v;
+}
+
+void print(vector<vector<int> > v)
+{
+	for(int i=0;i<v.size();i++){
+		for(int j=0;j<v[i].size();j++){
+			cout<<v[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+}
+
 int main()
 {
 	int i,j,k,n,m;
@@ -50,11 +71,21 @@ int main()
 		init.pb(user);
 	}
 
-	for(i=0;i<init.size();i++){
-		for(j=0;j<init[i].size();j++){
-			cout<<init[i][j]<<" ";
-		}
-		cout<<endl;
-	}
+	// Representation of initial population
+	printf("\n*******Initial Matrix*******\n");
+	print(init);
+
+	// Creating genre matrix for each movie
+	for(i=0;i<M;i++)
+		Genre.pb(Create_genre());
+
+	printf("\n*******Genre Matrix*******\n");
+	print(Genre);
+	printf("\n");
+
+
+	
+
+
 	return 0;
 }
