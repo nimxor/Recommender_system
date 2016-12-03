@@ -15,10 +15,11 @@ using namespace std;
 const int MAXM = 1e5+3;
 const int N = 4e1;
 const int M = 25; // For 25 movies
+int active_user;
 ll a[MAXM];
 map<ll,ll> m;
-vector<vector<double> >init,normalize_init;
-vector<vector<int> >Genre;
+vector<vector<double> >init,normalize_init,training;
+vector<vector<int> >Genre;  
 
 // For Generating the initial matrix
 vector<double> Generate()
@@ -91,6 +92,53 @@ void print(vector<vector<int> > v)
 	}
 }
 
+vector<vector<double> > Generate_Training_data(vector<double> in,int a_u)
+{
+	vector<vector<double> > set,tset;
+	vector<double> v;
+	vector<pair<int,double> > vp;
+	for(int i=0;i<in.size();i++){
+		if(i==in.size()-1){
+			vp.pb(mp(i,in[i]));
+		}
+		else if(in[i]!=0){
+			vp.pb(mp(i,in[i]));
+		}
+	}
+
+	int sz = vp.size()-2;
+	int training_size = sz*(2.0/3); 
+
+	for(int i=0;i<init.size();i++){
+		if(i==a_u)	continue;
+		for(int j=0;j<vp.size();j++){
+			int pos = vp[j].fi;
+			v.pb(init[i][pos]);
+		}
+		set.pb(v);
+		v.clear();
+	}
+
+	// cout<<training_size<<endl;
+
+	for(int i=0;i<set.size();i++){
+		for(int j=0;j<training_size;j++){
+			v.pb(set[i][j]);
+		}
+		tset.pb(v);
+		v.clear();
+	}
+
+	for(int i=0;i<set.size();i++){
+		for(int j=set[i].size()-2;j<set[i].size();j++){
+			tset[i].pb(set[i][j]);
+		}
+	}
+
+	return tset;
+
+}
+
 void print_double(vector<vector<double> > v)
 {
 	for(int i=0;i<v.size();i++){
@@ -101,7 +149,7 @@ void print_double(vector<vector<double> > v)
 	}
 }
 
-int main()
+void solve()
 {
 	int i,j,k,n,m;
 	srand(time(NULL));
@@ -129,9 +177,19 @@ int main()
 	print(Genre);
 	printf("\n");
 
+	printf("\n*******Training Matrix*******\n");
+	for(i=0;i<N;i++){
+		active_user = i;
+		training = Generate_Training_data(init[active_user],active_user);
+		printf("\n*******Training Matrix for user %d *******\n\n",i+1);
+		print_double(training);
+	}
+}
 
-	
-
-
+int main()
+{
+	int i,j,k,n,m;
+	srand(time(NULL));
+	solve();
 	return 0;
 }
