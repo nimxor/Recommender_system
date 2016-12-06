@@ -10,9 +10,9 @@ Single point crossover
 Bit flip mutatations
 
 ###Further Improvement
-(1) A hybrid model-based movie recommendation system which utilizes the improved K-means clustering coupled with genetic algorithms (GAs) to partition transformed user space .
-(2) Time can be reduse by using selection processes like 
---> Tournament selection.
---> Roulette wheel selection
-(3) More formal techniques could be investicated for designing the fitness function in a sophisticated way.
+1. A hybrid model-based movie recommendation system which utilizes the improved K-means clustering coupled with genetic algorithms (GAs) to partition transformed user space .
+2. Time can be reduse by using selection processes like 
+   1. Tournament selection.
+   2. Roulette wheel selection
+3. More formal techniques could be investicated for designing the fitness function in a sophisticated way.
 
