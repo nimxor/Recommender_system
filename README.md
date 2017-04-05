@@ -1,6 +1,6 @@
 # Recommender_system for movies and users
 
-## Fuzzy Genetic Approach to Recommend-er System
+## Fuzzy Genetic Approach to Recommender System
 
 ### Project description
 Implemented a hybrid fuzzy-genetic approach to recommender systems that retains the accuracy of memory-based collaborative Filtering(CF) and the scalability of model-based CF. project describes a new recommender system,which employs a genetic algorithm to learn personal preferences of users and provide tailored suggestions based on his previous preferences. 
