@@ -12,7 +12,7 @@ Implemented a hybrid fuzzy-genetic approach to recommender systems that retains 
 **Bit flip mutatations**
 
 ### Further Improvement
-1. A **hybrid model-based movie** recommendation system which utilizes the improved **K-means clustering coupled with genetic algorithms (GAs)**o partition transformed user space.
+1. A **hybrid model-based movie** recommendation system which utilizes the improved **K-means clustering coupled with genetic algorithms (GAs)** on partition transformed user space.
 2. Time can be reduse by using selection processes like 
    1. Tournament selection.
    2. Roulette wheel selection
